@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 
 export default function Index() {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [isEventsOpen, setIsEventsOpen] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -94,6 +97,63 @@ export default function Index() {
     { name: 'Питьевая вода', description: 'Чистая вода в миске', price: 'Бесплатно' }
   ];
 
+  const events = [
+    {
+      date: '5 декабря',
+      day: 'Четверг',
+      time: '20:00',
+      title: 'Джазовый вечер',
+      description: 'Живая музыка от трио "Медный саксофон". Импровизации в стиле swing и bebop',
+      type: 'music',
+      tag: 'Live Music'
+    },
+    {
+      date: '7 декабря',
+      day: 'Суббота',
+      time: '19:00',
+      title: 'Дегустация крафтового пива',
+      description: 'Знакомство с 8 сортами пива от локальных пивоварен. Сомелье расскажет о культуре пивоварения',
+      type: 'tasting',
+      tag: 'Дегустация'
+    },
+    {
+      date: '12 декабря',
+      day: 'Четверг',
+      time: '21:00',
+      title: 'Stand-up вечер',
+      description: 'Выступления молодых комиков. Юмор, импровизация и хорошее настроение гарантированы',
+      type: 'comedy',
+      tag: 'Stand-up'
+    },
+    {
+      date: '14 декабря',
+      day: 'Суббота',
+      time: '18:00',
+      title: 'Кулинарный мастер-класс',
+      description: 'Наш шеф научит готовить фирменный бургер "Наш" и пивные крылышки',
+      type: 'masterclass',
+      tag: 'Мастер-класс'
+    },
+    {
+      date: '19 декабря',
+      day: 'Четверг',
+      time: '20:00',
+      title: 'Вечер электроники',
+      description: 'DJ-сет от местного диджея. Dub, techno, ambient в уютной атмосфере лофта',
+      type: 'music',
+      tag: 'DJ Set'
+    },
+    {
+      date: '21 декабря',
+      day: 'Суббота',
+      time: '17:00',
+      title: 'Вечер настольных игр',
+      description: 'Большая коллекция настолок, дружеская атмосфера и специальное игровое меню',
+      type: 'games',
+      tag: 'Игры'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <audio ref={audioRef} loop onPlay={() => setIsMusicPlaying(true)} onPause={() => setIsMusicPlaying(false)}>
@@ -120,9 +180,56 @@ export default function Index() {
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
             Индустриальная атмосфера, крафтовые пивные коктейли и блюда от шефа
           </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg">
-            Забронировать столик
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg">
+              Забронировать столик
+            </Button>
+            <Dialog open={isEventsOpen} onOpenChange={setIsEventsOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-6 text-lg">
+                  <Icon name="Calendar" size={20} className="mr-2" />
+                  Узнать программу мероприятий
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-card">
+                <DialogHeader>
+                  <DialogTitle className="text-3xl font-bold text-primary mb-2">
+                    Афиша мероприятий
+                  </DialogTitle>
+                  <p className="text-muted-foreground">Предстоящие события в НАШ БАР</p>
+                </DialogHeader>
+                <div className="grid gap-4 mt-6">
+                  {events.map((event, idx) => (
+                    <Card key={idx} className="bg-background border-border hover:border-primary transition-all duration-300 overflow-hidden">
+                      <CardContent className="p-6">
+                        <div className="flex flex-col md:flex-row gap-4">
+                          <div className="flex-shrink-0 text-center md:text-left">
+                            <div className="text-4xl font-bold text-accent">{event.date.split(' ')[0]}</div>
+                            <div className="text-sm text-muted-foreground">{event.date.split(' ')[1]}</div>
+                            <div className="text-sm text-muted-foreground mt-1">{event.day}</div>
+                            <Badge className="mt-2 bg-primary">{event.tag}</Badge>
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-start justify-between mb-2">
+                              <h3 className="text-2xl font-semibold text-primary">{event.title}</h3>
+                              <div className="flex items-center text-accent ml-4">
+                                <Icon name="Clock" size={18} className="mr-1" />
+                                <span className="font-semibold">{event.time}</span>
+                              </div>
+                            </div>
+                            <p className="text-muted-foreground">{event.description}</p>
+                            <Button className="mt-4 bg-accent hover:bg-accent/90">
+                              Забронировать место
+                            </Button>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
         </div>
       </section>
 
