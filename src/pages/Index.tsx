@@ -35,25 +35,25 @@ export default function Index() {
       name: 'Хмельной Закат',
       description: 'Авторский пивной коктейль на основе светлого лагера с добавлением грейпфрутового сока, имбирного сиропа и мяты',
       price: '450₽',
-      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/8bb98ac8-1d71-49de-9ec9-9d17e7480500.jpg'
+      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/e46676d5-3dff-474e-959d-717c6bab6294.jpg'
     },
     {
       name: 'Лофт Мьюл',
       description: 'IPA, имбирное пиво, лайм, мята и острый перец. Освежающий коктейль с пикантной ноткой',
       price: '490₽',
-      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/20eae588-8d6f-42d1-9a92-4157ac7f09aa.jpg'
+      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/d2c4d833-f998-4ebf-b57d-2f858b932d4a.jpg'
     },
     {
       name: 'Индустриальный Твист',
       description: 'Тёмный эль, апельсиновый ликёр, биттер, цедра апельсина. Глубокий вкус с цитрусовыми нотами',
       price: '520₽',
-      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/ddd31cce-e49f-47f5-ba6b-ff7cc76abbf5.jpg'
+      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/cca25cd4-990c-43a3-8a42-135977be2890.jpg'
     },
     {
       name: 'Медный Ритм',
       description: 'Светлое пшеничное пиво, персиковый сироп, базилик, просекко. Лёгкий игристый микс',
       price: '470₽',
-      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/b4b3ad13-ebfa-4e09-8e55-3952d70682e3.jpg'
+      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/6747d8f0-35fa-4694-a576-8cef58cbde77.jpg'
     }
   ];
 
