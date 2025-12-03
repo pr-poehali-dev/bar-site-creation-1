@@ -62,25 +62,25 @@ export default function Index() {
       name: 'Бургер "Наш"',
       description: 'Мраморная говядина, бекон, чеддер, карамелизированный лук, салат айсберг, фирменный соус. Подаётся с картофелем фри',
       price: '690₽',
-      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/eacba181-ed4f-4304-bbf1-187fba8c2b8f.jpg'
+      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/2c940843-815d-4624-9ed0-b90736b8de13.jpg'
     },
     {
       name: 'Стейк Рибай',
       description: 'Выдержанная говядина 300г, овощи гриль, соус демиглас, розмариновый картофель',
       price: '1290₽',
-      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/eacba181-ed4f-4304-bbf1-187fba8c2b8f.jpg'
+      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/0911d9c0-9b87-4c53-ba29-f10bb5365f67.jpg'
     },
     {
       name: 'Пивные Крылышки',
       description: 'Куриные крылья в пивном маринаде с острым или BBQ соусом, сельдерей, сырный дип',
       price: '550₽',
-      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/eacba181-ed4f-4304-bbf1-187fba8c2b8f.jpg'
+      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/beb2ac24-1bf1-4333-b368-6af9963f6aeb.jpg'
     },
     {
       name: 'Камамбер Гриль',
       description: 'Запечённый камамбер с клюквенным соусом, грецкими орехами и хрустящим багетом',
       price: '620₽',
-      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/eacba181-ed4f-4304-bbf1-187fba8c2b8f.jpg'
+      image: 'https://cdn.poehali.dev/projects/f531f220-7c49-4be5-9efa-fdb9e6a78b14/files/149bf3de-0685-4e35-8bae-71b68277bec1.jpg'
     }
   ];
 
@@ -95,6 +95,33 @@ export default function Index() {
     { name: 'Говяжьи снеки', description: 'Натуральные сушёные кусочки говядины', price: '200₽' },
     { name: 'Куриное филе', description: 'Отварное куриное филе без специй', price: '180₽' },
     { name: 'Питьевая вода', description: 'Чистая вода в миске', price: 'Бесплатно' }
+  ];
+
+  const reviews = [
+    {
+      name: 'Анна Петрова',
+      rating: 5,
+      text: 'Невероятная атмосфера! Пивные коктейли просто огонь, особенно "Лофт Мьюл". Обязательно вернусь!',
+      date: '25 ноября 2024'
+    },
+    {
+      name: 'Дмитрий Соколов',
+      rating: 5,
+      text: 'Стейк Рибай - лучший, что я пробовал в городе. Прожарка идеальная, а интерьер в стиле лофт создаёт особую атмосферу.',
+      date: '18 ноября 2024'
+    },
+    {
+      name: 'Мария Краснова',
+      rating: 5,
+      text: 'Были на джазовом вечере - восторг! Музыка, кухня, обслуживание - всё на высшем уровне. С собакой тоже можно, это большой плюс!',
+      date: '10 ноября 2024'
+    },
+    {
+      name: 'Алексей Морозов',
+      rating: 5,
+      text: 'Отличное место для встреч с друзьями. Бургер "Наш" действительно заслуживает своего названия - вкуснейший! Рекомендую.',
+      date: '2 ноября 2024'
+    }
   ];
 
   const events = [
@@ -325,6 +352,30 @@ export default function Index() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-card">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-bold mb-12 text-center text-primary">Отзывы гостей</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+            {reviews.map((review, idx) => (
+              <Card key={idx} className="bg-background border-border">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-semibold">{review.name}</h3>
+                    <div className="flex gap-1">
+                      {Array.from({ length: review.rating }).map((_, i) => (
+                        <Icon key={i} name="Star" size={18} className="text-accent fill-accent" />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-muted-foreground mb-3">{review.text}</p>
+                  <p className="text-sm text-muted-foreground/70">{review.date}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
